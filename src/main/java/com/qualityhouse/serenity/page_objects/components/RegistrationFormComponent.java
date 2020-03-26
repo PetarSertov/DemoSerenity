@@ -24,4 +24,6 @@ public abstract class RegistrationFormComponent
     public static final By ADDRESS_COUNTRY_DROP_DOWN_LOCATOR = By.name( "id_country" );
     public static final By addressMobilePhoneField = By.name( "phone_mobile" );
     public static final By addressAliasField = By.name( "alias" );
+    public static final By REGISTER_BUTTON = By.name( "submitAccount" );
+    public static final By REGISTRATION_ALERT = By.cssSelector( "div.alert" );
 }

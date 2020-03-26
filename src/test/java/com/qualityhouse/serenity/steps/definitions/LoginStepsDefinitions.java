@@ -37,18 +37,18 @@ public class LoginStepsDefinitions
     {
     }
 
-    @Then( "^I should see \"([^\"]*)\"$" )
-    public void iShouldSee( String arg0 ) throws Throwable
-    {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
-
     @When( "^(?:.*) logs in with:$" )
     public void johnLogsInWith( List<User> data )
     {
         User user = data.get( 0 );
         ivancho.logsInWithCredentials( user );
+    }
+
+    @Then( "^I should see \"([^\"]*)\"$" )
+    public void iShouldSee( String arg0 ) throws Throwable
+    {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
     }
 
     @Then( "^(.*) is logged in successfully$" )

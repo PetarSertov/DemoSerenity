@@ -5,7 +5,8 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Step;
 import org.openqa.selenium.By;
 
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author yakimfb
@@ -86,5 +87,32 @@ public class BasesActions
         return webElement.waitUntilVisible()
                          .getText()
                          .trim();
+    }
+
+    @Step
+    public void clicksOn( final By locator )
+    {
+        currentPage.find( locator )
+                   .waitUntilClickable()
+                   .click();
+    }
+
+    public String readsTextFrom( By locator )
+    {
+        return readsTextFrom( (WebElementFacade) currentPage.find( locator ) );
+    }
+
+    @Step
+    public List<String> readsTextFromList( By listItemsLocator )
+    {
+        List<WebElementFacade> errorsItemsElements = currentPage.findAll( listItemsLocator );
+        List<String> errorMessages = new ArrayList<>( errorsItemsElements.size() );
+
+        for ( WebElementFacade item : errorsItemsElements )
+        {
+            errorMessages.add( item.getText()
+                                   .trim() );
+        }
+        return errorMessages;
     }
 }
