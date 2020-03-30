@@ -25,7 +25,7 @@ Feature: Account Registration
       | address | city  | state  | zip   | country       | mobilePhone | addressAlias |
       | gate 13 | South | Alaska | 14253 | United States | 42342342343 | TheWall      |
     And he submits his registration details
-    Then the registration is successful
+    #Then the registration is successful
     And John is logged in successfully
 
   Scenario Outline: Unsuccessful Registration
@@ -42,14 +42,14 @@ Feature: Account Registration
     Then error "<error_message>" message should display
 
     Examples:
-      | title | first_name | last_name | password    | data_of_birth    | address | city  | state  | zip   | country       | mobile_phone | address_alias | error_message                |
-      | Mr.   | John       | Snow      | 123abc      | 28-February-1985 | gate 13 | South | Alaska | 14    | United States | 42342342343  | TheWall       | Zip/Postal is invalid        |
-      | Mr.   |            | Snow      | password123 | 28-February-1985 | gate 13 | South | Alaska | 14253 | United States | 42342342343  | TheWall       | First name filed is required |
-      | Mr.   | John       | Snow      | password123 | 28-February-1985 | gate 13 | South | Alaska | 14253 | United States | 42342342343  | TheWall       | ??                           |
-      | Mr.   | John       | Snow      | password123 | 28-February-1985 | gate 13 | South | Alaska | 14253 | United States | 42342342343  | TheWall       | ??                           |
-      | Mr.   | John       | Snow      | password123 | 28-February-1985 | gate 13 | South | Alaska | 14253 | United States | 42342342343  | TheWall       | ??                           |
-      | Mr.   | John       | Snow      | password123 | 28-February-1985 | gate 13 | South | Alaska | 14253 | United States | 42342342343  | TheWall       | ??                           |
-      | Mr.   | John       | Snow      | password123 | 28-February-1985 | gate 13 | South | Alaska | 14253 | United States | 42342342343  | TheWall       | ??                           |
+      | title | first_name | last_name | password    | data_of_birth    | address | city  | state  | zip   | country       | mobile_phone | address_alias | error_message                                                                    |
+      | Mr.   | John       |           | password123 | 28-February-1985 | gate 13 | South | Alaska | 14253 | United States | 42342342343  | TheWall       | lastname is required.                                                            |
+      | Mr.   |            | Snow      | password123 | 28-February-1985 | gate 13 | South | Alaska | 14253 | United States | 42342342343  | TheWall       | firstname is required.                                                           |
+      | Mr.   | John       | Snow      |             | 28-February-1985 | gate 13 | South | Alaska | 14253 | United States | 42342342343  | TheWall       | passwd is required.                                                              |
+      | Mr.   | John       | Snow      | password123 | 28-February-1985 |         | South | Alaska | 14253 | United States | 42342342343  | TheWall       | address1 is required.                                                            |
+      | Mr.   | John       | Snow      | password123 | 28-February-1985 | gate 13 |       | Alaska | 14253 | United States | 42342342343  | TheWall       | city is required.                                                                |
+      | Mr.   | John       | Snow      | password123 | 28-February-1985 | gate 13 | South | Alaska |       | United States | 42342342343  | TheWall       | The Zip/Postal code you've entered is invalid. It must follow this format: 00000 |
+      | Mr.   | John       | Snow      | password123 | 28-February-1985 | gate 13 | South | Alaska | 14253 | -             | 42342342343  | TheWall       | This country requires you to choose a State.                                     |
 
 
   @debug
